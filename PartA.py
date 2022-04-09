@@ -24,6 +24,13 @@ def tokenize(filepath):
         tokens - list of tokens (lowercase)
     """
     # open the file from the command line argument
+    # checks if file is valid
+    try:
+        open(filepath, 'r').close()
+    
+    except IOError:
+        print('Trouble opening file')
+
     file1 = open(filepath, 'r') 
     # instantiate tokens list that will be returned
     tokens = []
@@ -120,6 +127,10 @@ def main():
         when run from the command line, program takes one text file as an argument
         and outputs the token frequencies
     """
+    # checks for correct number of arguments from command line
+    if not len(sys.argv) == 2:
+        raise TypeError('1 argument needed ({len} given)'
+                        .format(len = len(sys.argv) - 1))
     # call tokenize function 
     tokens = tokenize(sys.argv[1])
 

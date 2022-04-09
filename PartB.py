@@ -65,6 +65,10 @@ def main():
         from the command line as arguments and outputs the number of 
         tokens they have in common
     """
+    # checks for correct number of arguments from command line
+    if not len(sys.argv) == 3:
+        raise TypeError('2 arguments needed ({len} given)'
+                        .format(len = len(sys.argv) - 1))
     intersection(sys.argv[1], sys.argv[2])
 
 
